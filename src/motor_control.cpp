@@ -15,7 +15,7 @@ void setPWM(uint8_t pin, uint16_t dutyCycle);
 void setupGPIO(uint8_t pin, bool output);
 void writeGPIO(uint8_t pin, bool high);
 
-// Motor control pins
+// Define motor control pins
 const uint8_t PWM_PIN = 10; // PWM control for motor speed
 const uint8_t FORWARD_PIN = 11; // GPIO for forward direction
 const uint8_t REVERSE_PIN = 12; // GPIO for reverse direction
@@ -46,13 +46,14 @@ void setMotorDirection(bool forward) {
 }
 
 int main() {
-    initMotorControl();
-
-    // Example usage
-    setMotorDirection(true); // Set direction to forward
-    setMotorSpeed(50); // Set speed to 50%
-
-    // Your application logic here
-
+    MotorControl motor;
+    motor.initialize();
+    motor.start();
+    motor.setSpeed(50);
+    motor.increaseSpeed(10);
+    motor.decreaseSpeed(5);
+    motor.reverseDirection();
+    motor.brake();
+    motor.stop();
     return 0;
 }
