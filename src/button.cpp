@@ -17,6 +17,7 @@ void Button::fall() {
     }
 }
 
-// Button::Button(bool locking_mode) {
-//     locking = locking_mode
-// }
+Button::Button(bool locking_mode) {
+    locking = locking_mode;
+    state = false;
+}
